@@ -30,7 +30,7 @@ class Accounts {
      		array_push($err,"Invalid email ");
 		}
 		if (empty($err)) {
-			$salt = '$1$12!abawdawdasergs';
+			$salt = '$1$12!abawdawd';
 			$_POST["password"] = crypt($_POST["password"], $salt);
 			$id = $this->usersModel->insertItem($_POST);
 			return "Sign Up succesfull, ";
