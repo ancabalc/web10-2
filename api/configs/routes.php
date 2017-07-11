@@ -1,4 +1,4 @@
 <?php
 
-$routes[] = [];
+$routes[/accounts/create] = ["class"=>"Accounts","method"=>"signUp"];
 ?>
