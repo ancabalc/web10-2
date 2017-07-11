@@ -29,16 +29,20 @@ class Accounts {
 		if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
      		array_push($err,"Invalid email ");
 		}
+		if(empty($_POST["role"])){
+			array_push($err,"Invalid Role ");
+		}
 		if (empty($err)) {
 			$salt = '$1$12!abawdawd';
 			$_POST["password"] = crypt($_POST["password"], $salt);
 			$id = $this->usersModel->insertItem($_POST);
-			return "Sign Up succesfull, ";
 			return "Inserted Article Id = " .$id;
-		}else{return $err;die();}
+		} else {
+			return $err;
+		}
 	}
 
-    }
+}
     
 
     
