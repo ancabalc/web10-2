@@ -2,11 +2,13 @@
 require "models/UsersModel.php";
 
 class Accounts {
-     private $usersModel;
-	function __construct()
-	{
+
+    private $usersModel;
+
+	function __construct(){
 		$this->usersModel = new UsersModel();
 	}
+
 	function signUp(){
 		$err=[];
 
@@ -16,27 +18,23 @@ class Accounts {
 
 		if ($_POST["password"] != $_POST["repassword"]) {
 			array_push($err,"Password fields do not match ");
-		}elseif (empty($_POST["password"])) {
+		} elseif (empty($_POST["password"])) {
 			array_push($err,"Empty password field ");
-		}
-
-		if (empty($_POST["firstName"])) {
-			array_push($err,"Empty First Name field ");
-		}
-		if (empty($_POST["lastName"])) {
-			array_push($err,"Empty Last Name field ");
 		}
 		if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
      		array_push($err,"Invalid email ");
 		}
-		if(empty($_POST["role"])){
+		if (empty($_POST["job"])) {
+			array_push($err,"Empty job field");
+		}
+		if (empty($_POST["role"])){
 			array_push($err,"Invalid Role ");
 		}
 		if (empty($err)) {
 			$salt = '$1$12!abawdawd';
 			$_POST["password"] = crypt($_POST["password"], $salt);
 			$id = $this->usersModel->insertItem($_POST);
-			return "Inserted Article Id = " .$id;
+			return "Succesfull";
 		} else {
 			return $err;
 		}
