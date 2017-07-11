@@ -1,5 +1,5 @@
 <?php
 
 $routes["/accounts/create"] = ["class"=>"Accounts","method"=>"signUp"];
-$routes["/applications/create"] = ["class" => "Applications", "method" => "create"];
+$routes["/applications/create"] = ["class" => "Applications", "method" => "createApplication"];
 ?>
