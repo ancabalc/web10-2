@@ -17,9 +17,9 @@ class UsersModel extends DB {
     }
 
 	function insertItem($item){
-		 $params = [ $item["name"],
-                    $item["password"],
+         $params = [ $item["name"],
                     $item["email"],
+                    $item["password"],
                     $item["role"],
                     $item["job"]];
 
@@ -29,7 +29,7 @@ class UsersModel extends DB {
         $sth->execute($params);
         return $this->db->lastInsertId();
 
-	}
+    }
 	
 	function updateProfile($item){
         $params = [ $item['name'],
