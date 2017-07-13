@@ -18,4 +18,13 @@ require "models/OffersModel.php";
            return $this->offersModel->insertOffer($_POST);  
        }
    }
+   
+   function deleteOffer() {
+
+        if (empty($_POST['id'])) {
+            return "Empty offer id";    
+        } else {
+            return $this->offersModel->deleteOffer($_POST["id"]);     
+        }
+    }
  }
