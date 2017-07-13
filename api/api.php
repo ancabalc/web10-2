@@ -1,4 +1,5 @@
 <?php
+session_start();
 require "configs/routes.php";
 define ("APP_FOLDER", "/api");
 $currentRoute = str_replace(APP_FOLDER, "", $_SERVER["REDIRECT_URL"]);
@@ -7,7 +8,7 @@ if (!empty($currentRoute)) {
         $class = $routes[$currentRoute]["class"];
         $method = $routes[$currentRoute]["method"];
         
-        require "api/controllers/".$class.".php";
+        require "controllers/".$class.".php";
         $controller = new $class();
         $response = $controller->$method();
         
