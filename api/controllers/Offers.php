@@ -1,4 +1,5 @@
 <?php
+<<<<<<< HEAD
 
 require "models/OffersModel.php";
 
@@ -24,3 +25,9 @@ class Offers {
         }
     }
 }
+=======
+
+class Offers {
+
+}
+>>>>>>> e3dd8760e611c985630de5ce69fcd42ddebabd27

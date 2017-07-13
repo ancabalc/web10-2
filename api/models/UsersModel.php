@@ -1,5 +1,6 @@
 <?php
 require_once "DB.php";
+
 class UsersModel extends DB {
 
     function getAll() {
@@ -16,9 +17,9 @@ class UsersModel extends DB {
     }
 
 	function insertItem($item){
-		 $params = [ $item["name"],
-                    $item["password"],
+         $params = [ $item["name"],
                     $item["email"],
+                    $item["password"],
                     $item["role"],
                     $item["job"]];
 
@@ -28,9 +29,20 @@ class UsersModel extends DB {
         $sth->execute($params);
         return $this->db->lastInsertId();
 
-	}
-
-
+    }
+	
+	function updateProfile($item){
+        $params = [ $item['name'],
+                    $item['description'],
+                    $item['image'],
+                    $item['id']
+                    ];
+                    //change 1 to $_SESSION['id'];
+        $query = "UPDATE users SET name = ?, description = ?, image = ? where id = ?";
+        $sth = $this -> db -> prepare($query);
+        $sth->execute($params);
+        
+        return $sth->rowCount();
+    }
 }
-
 ?>
