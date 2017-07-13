@@ -1,8 +1,18 @@
 <?php
+
 require_once "DB.php";
 
 class UsersModel extends DB {
 
+    function login($params) {
+        
+        $query = 'select * from users where email = ? and password = ?';
+        
+        $sth = $this -> db ->prepare($query);
+        $sth ->execute($params);
+        return $sth -> fetch(PDO::FETCH_ASSOC);
+                    
+    }
     function getAll() {
         $query = 'select name, email,role,job, description from users;'; 
         return $this->executeQuery($query);
@@ -46,3 +56,4 @@ class UsersModel extends DB {
     }
 }
 ?>
+
