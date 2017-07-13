@@ -1,7 +1,13 @@
 <?php
+            
 require_once "DB.php";
 
 class OffersModel extends DB {
+    
+    function selectAll() {
+            $query = 'select * from offers'; 
+            return $this->executeQuery($query);
+    }
     
     function insertOffer($item) {
         $params = [
@@ -17,5 +23,16 @@ class OffersModel extends DB {
        
         return $this->db->lastInsertID();
     }
+    
+    function deleteOffer($id) {
+        $params = [$id];
+
+        $query = 'DELETE FROM offers WHERE id = ?';
+        $sth = $this->db->prepare($query);
+        $sth->execute($params);
+       
+        return $sth->rowCount();     
     }
-?>
+    }
+
+

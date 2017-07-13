@@ -1,15 +1,42 @@
 <?php
+
+
 require "models/UsersModel.php";
 
 class Accounts {
-     private $usersModel;
+    private $usersModel;
 	function __construct()
 	{
 		$this->usersModel = new UsersModel();
 	}
-	function signUp(){
-		$err=[];
+      
+    function login() {
+        
+        if ( empty($_POST['email']) || empty($_POST['password'])) {
+            return "Invalid Fields";
+        } else {
+            
+            $salt = '$1$12!abawdawd';
+            $_POST["password"] = crypt($_POST["password"], $salt);
+            
+            $user =  $this->usersModel->login($_POST);  
+            
+            if  (!empty(result)) {
+                $_SESSION["isLogged"]=TRUE;
+                $_SESSION["email"]=$_POST["email"];
+                return $_SESSION;
+                
+            } else {
+                return "User not found";
+            }
+        }
+    }
+     
+     
 
+	function signUp(){
+		
+		$err=[];
 		$name = $_POST["name"];
 		$pat = "/[A-Z,a-z, ,']/";
 		preg_match_all($pat, $name, $match_out);
@@ -17,7 +44,7 @@ class Accounts {
 
 		if (empty($name)) {
 			array_push($err,"Empty username field ");
-		} else if ($name !== $imp){
+		} else if ($name !== $imp) {
 			array_push($err,"Invalid username field ");
 		}
 
@@ -59,3 +86,4 @@ class Accounts {
 	}
 
 }
+
