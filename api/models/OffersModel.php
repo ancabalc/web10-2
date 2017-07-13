@@ -1,7 +1,13 @@
 <?php
+            
 require_once "DB.php";
 
 class OffersModel extends DB {
+    
+    function selectAll() {
+            $query = 'select * from offers'; 
+            return $this->executeQuery($query);
+    }
     
     function insertOffer($item) {
         $params = [
@@ -28,4 +34,5 @@ class OffersModel extends DB {
         return $sth->rowCount();     
     }
     }
-?>
+
+
