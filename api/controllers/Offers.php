@@ -1,5 +1,4 @@
 <?php
-<<<<<<< HEAD
 
 require "models/OffersModel.php";
 
