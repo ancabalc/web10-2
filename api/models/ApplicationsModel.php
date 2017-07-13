@@ -7,10 +7,12 @@ require_once "DB.php";
         function insertItem($item) {
         $params = [$item["title"],
                     $item["description"],
+                    $item["category_id"],
+                    $item["price"],
                     $item["active"]];
 
-        $query = 'INSERT INTO applications(title, description,active) 
-                VALUES(? , ?, ?);';
+        $query = 'INSERT INTO applications(title, description, category_id, price, active) 
+                VALUES(?, ?, ?, ?, ?);';
         $sth = $this->db->prepare($query);
         $sth->execute($params);
        
