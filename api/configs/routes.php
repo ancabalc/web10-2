@@ -1,5 +1,6 @@
 <?php
 
+$routes['/users/update'] = ["class" => "Users", "method" => "update"];
 $routes["/accounts/create"] = ["class"=>"Accounts","method"=>"signUp"];
 $routes["/applications/create"] = ["class" => "Applications", "method" => "createApplication"];
 $routes["/offers/create"] = ["class"=>"Offers","method"=>"addOffer"];
