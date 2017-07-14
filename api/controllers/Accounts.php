@@ -56,10 +56,6 @@ class Accounts {
 		} else if ($_POST["password"] !== $_POST["repassword"]) {
 			array_push($err,"Password fields do not match ");
 		}
-
-		if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
-     		array_push($err,"Invalid email ");
-		}
 		
 		$job = $_POST["job"];
 		preg_match_all($pat, $job, $match_out);
@@ -73,11 +69,18 @@ class Accounts {
 		if (empty($_POST["role"])){
 			array_push($err,"Invalid Role ");
 		}
-		if (empty($err)) {
+		if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
+     		array_push($err,"Invalid email ");
+		} else if (empty($err)){
 			$salt = '$1$12!abawdawd';
 			$_POST["password"] = crypt($_POST["password"], $salt);
 			$id = $this->usersModel->insertItem($_POST);
-			return "Succesfull sign up".$id;
+		} else if ($id === 0){
+			array_push($err,"Email already exists, ");
+		}
+
+		if (empty($err)) {
+			return "Succesfull sign up";
 		} else {
 			return $err;
 		}

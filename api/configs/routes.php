@@ -9,5 +9,6 @@ $routes["/accounts/reset_password"] = ["class" => "Accounts" , "method" => "rese
 $routes["/offers"] = ["class"=>"Offers","method"=>"getAll"];
 $routes["/applications/create"] = ["class" => "Applications", "method" => "createApplication"];
 $routes["/offers/create"] = ["class"=>"Offers","method"=>"addOffer"];
+$routes["/offers/delete"] = ["class" => "Offers", "method" => "deleteOffer"];
 $routes["/users"] = ["class" => "Users", "method" => "getAll"];
 $routes["/users/last3"] = ["class" => "Users", "method" => "getLast3"];

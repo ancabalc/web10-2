@@ -1,5 +1,4 @@
 <?php
-<<<<<<< HEAD
 
 require "models/OffersModel.php";
 
@@ -16,18 +15,21 @@ class Offers {
     }
     
     function addOffer() {
-        // suppose user session
-        $_POST['user_id'] = 1;
-        if (empty($_POST['application_id']) || empty($_POST['description'])) {
-            return "Invalid Fields";
+       // suppose user session
+       $_POST['user_id'] = 1;
+       if (empty($_POST['application_id']) || empty($_POST['description'])) {
+           return "Invalid Fields";
+       } else {
+           return $this->offersModel->insertOffer($_POST);  
+       }
+   }
+   
+   function deleteOffer() {
+
+        if (empty($_POST['id'])) {
+            return "Empty offer id";    
         } else {
-            return $this->offersModel->insertOffer($_POST);  
+            return $this->offersModel->deleteOffer($_POST["id"]);     
         }
     }
-}
-=======
-
-class Offers {
-
-}
->>>>>>> e3dd8760e611c985630de5ce69fcd42ddebabd27
+ }
