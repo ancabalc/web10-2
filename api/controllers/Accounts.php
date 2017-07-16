@@ -2,6 +2,7 @@
 
 
 require "models/UsersModel.php";
+require "helpers/passwords.php";
 
 class Accounts {
     private $usersModel;
@@ -85,5 +86,50 @@ class Accounts {
 		}
 	}
 
+
+    function reset_password(){
+        //return "here";
+        $email_array = [$_POST["email"]];
+        $email = $_POST["email"];
+        if (empty($email)) {
+            return "Please enter your email";
+        }
+        
+        else { 
+            $user =  $this->usersModel-> verify_email($email_array);  
+           
+            
+            if (empty($user)) {
+                return "User not found";
+            }
+            else {
+                $newPassword = bin2hex(mcrypt_create_iv(22,MCRYPT_DEV_URANDOM));
+                 $salt = '$1$12!abawdawd';
+                 $incriptedPassword = crypt($newPassword, $salt);
+                 $params = [$incriptedPassword, $email];
+                 $result = $this->usersModel-> update_password($params); 
+                 
+                 if ($result != 1) {
+                     return "password reset failed";
+                 }
+                 else {
+                     $subject = "Your recovered password ";
+                     $message = "Your nex password is " . $newPassword;
+                     $headers = "From: abs@abs.com";
+                     if (mail($email, $subject, $message, $headers)){
+                     return "We have sent you a message by email to reset your password";
+                     }
+                     else {
+                         return "failed to send email";
+                     }
+                 }
+            }
+            
+            
+            
+        }
+        
+    }
 }
+
 

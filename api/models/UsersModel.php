@@ -54,6 +54,24 @@ class UsersModel extends DB {
         
         return $sth->rowCount();
     }
+    
+    function verify_email($email){
+        $query = 'select * from users where email= ? ';
+        $sth = $this -> db -> prepare($query);
+        $sth->execute($email);
+        
+        return $sth->fetch(PDO::FETCH_ASSOC);
+    }
+    
+    
+    function update_password($params){
+        $query = 'update users set password = ? where email = ?';
+        
+        $sth = $this -> db -> prepare($query);
+        $sth->execute($params);
+        
+        return $sth->rowCount();
+    }
 }
 ?>
 
