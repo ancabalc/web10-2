@@ -2,10 +2,10 @@
 -- version 4.0.10deb1
 -- http://www.phpmyadmin.net
 --
--- Gazda: 127.0.0.1
--- Timp de generare: 26 Oct 2016 la 11:45
--- Versiune server: 5.5.49-0ubuntu0.14.04.1
--- Versiune PHP: 5.5.9-1ubuntu4.17
+-- Host: 127.0.0.1
+-- Generation Time: Jul 13, 2017 at 06:10 PM
+-- Server version: 5.5.54-0ubuntu0.14.04.1
+-- PHP Version: 5.5.9-1ubuntu4.21
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,43 +17,41 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Bază de date: `webapp_services`
+-- Database: `webapp_services`
 --
-CREATE DATABASE IF NOT EXISTS `webapp_services` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `webapp_services`;
 
 -- --------------------------------------------------------
 
 --
--- Structura de tabel pentru tabelul `applications`
+-- Table structure for table `applications`
 --
 
-DROP TABLE IF EXISTS `applications`;
 CREATE TABLE IF NOT EXISTS `applications` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
   `title` varchar(255) NOT NULL,
   `description` text NOT NULL,
   `category_id` int(11) NOT NULL,
+  `price` decimal(10,0) NOT NULL,
   `creation_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `active` tinyint(4) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
--- Salvarea datelor din tabel `applications`
+-- Dumping data for table `applications`
 --
 
-INSERT INTO `applications` (`id`, `user_id`, `title`, `description`, `category_id`, `creation_date`, `active`) VALUES
-(1, 1, 'App', 'Desc', 1, '2016-10-26 11:43:23', 1);
+INSERT INTO `applications` (`id`, `user_id`, `title`, `description`, `category_id`, `price`, `creation_date`, `active`) VALUES
+(1, 1, 'App', 'Desc', 1, '0', '2016-10-26 11:43:23', 1),
+(2, 0, 'Acesta e titlul nou', 'Continut actualizat', 0, '0', '2017-07-11 17:37:16', 0);
 
 -- --------------------------------------------------------
 
 --
--- Structura de tabel pentru tabelul `categories`
+-- Table structure for table `categories`
 --
 
-DROP TABLE IF EXISTS `categories`;
 CREATE TABLE IF NOT EXISTS `categories` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL,
@@ -61,7 +59,7 @@ CREATE TABLE IF NOT EXISTS `categories` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
--- Salvarea datelor din tabel `categories`
+-- Dumping data for table `categories`
 --
 
 INSERT INTO `categories` (`id`, `title`) VALUES
@@ -71,10 +69,9 @@ INSERT INTO `categories` (`id`, `title`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structura de tabel pentru tabelul `offers`
+-- Table structure for table `offers`
 --
 
-DROP TABLE IF EXISTS `offers`;
 CREATE TABLE IF NOT EXISTS `offers` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
@@ -85,7 +82,7 @@ CREATE TABLE IF NOT EXISTS `offers` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
--- Salvarea datelor din tabel `offers`
+-- Dumping data for table `offers`
 --
 
 INSERT INTO `offers` (`id`, `user_id`, `application_id`, `description`, `creation_date`) VALUES
@@ -94,10 +91,9 @@ INSERT INTO `offers` (`id`, `user_id`, `application_id`, `description`, `creatio
 -- --------------------------------------------------------
 
 --
--- Structura de tabel pentru tabelul `users`
+-- Table structure for table `users`
 --
 
-DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
@@ -112,7 +108,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
--- Salvarea datelor din tabel `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `role`, `job`, `description`, `image`) VALUES
