@@ -7,14 +7,9 @@ class Accounts {
 	{
 		$this->usersModel = new UsersModel();
 	}
-<<<<<<< HEAD
 
-
-    }
-    
 
     
-=======
 	function signUp(){
 		$err=[];
 
@@ -64,4 +59,3 @@ class Accounts {
 	}
 
 }
->>>>>>> e3dd8760e611c985630de5ce69fcd42ddebabd27

@@ -23,5 +23,26 @@ class OffersModel extends DB {
        
         return $this->db->lastInsertID();
     }
+    
+    
+    
+ /*   function getAll($item){
+         $params = [
+                    $item["user_id"],
+                    $item["application_id"],
+                    $item["description"],
+                    $item["creation_date"]
+                    ];
+         
+          $query = 'INSERT INTO offers(user_id, application_id, description, creation_date) 
+                VALUES(? , ?, ?, ?)';
+          $sth = $this->db->prepare($query);
+          $sth->execute($params);
+       
+          return $this->db->lastInsertID();
+    }
+        
+        
+    }*/
 }
 
