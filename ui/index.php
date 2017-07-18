@@ -27,7 +27,18 @@
       <div class="item">
         <img src="/ui/images/desk.jpg" alt="desk" style="width:100%;height:80%;">
       </div>
-    </div>
+      
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="assets/css/style.css" type="text/css" />
+</head>
+<body>
+    <?php include("layout/navbar.html"); ?>
+    <?php include("layout/footer.html") ?>
+    
+    <div class='offers-list'></div>
+  
 
     <!-- Left and right controls -->
     <a class="left carousel-control" href="#myCarousel" data-slide="prev">
