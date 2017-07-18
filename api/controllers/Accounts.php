@@ -39,8 +39,13 @@ class Accounts {
 			return $err;
 		}
 	}
-	
-}
-    
+	function deleteAccount() {
+		if ($email = ($_POST["email"])) {
+			return changeActive($email);
+		};
+		
+		}
+	}
+
 
     
