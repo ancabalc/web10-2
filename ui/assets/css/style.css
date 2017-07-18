@@ -1,6 +1,32 @@
+/* HEADER */
+.brand {
+    width:170px; 
+    height:40px; 
+    margin-top:-11px; 
+    margin-right:55px;
+}
+.navbar-brand:hover {
+    background-color: transparent !important;
+}
+
+.active>a{
+    background-color: #004b8d !important;
+    color:#fff !important;
+}
+
+.searchbar {
+    margin-left: 60px;
+}
+
+a:hover {
+    background-color: #004b8d !important;
+    color:#fff !important;
+}
+
 /* FOOTER */
 .copyright {
     text-align:center;
+    margin-top:11px;
     
 }
 
