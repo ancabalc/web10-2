@@ -24,6 +24,7 @@ class OffersModel extends DB {
         return $this->db->lastInsertID();
     }
     
+<<<<<<< HEAD
     
     
  /*   function getAll($item){
@@ -45,4 +46,17 @@ class OffersModel extends DB {
         
     }*/
 }
+=======
+    function deleteOffer($id) {
+        $params = [$id];
+
+        $query = 'DELETE FROM offers WHERE id = ?';
+        $sth = $this->db->prepare($query);
+        $sth->execute($params);
+       
+        return $sth->rowCount();     
+    }
+    }
+
+>>>>>>> 61552f431a6ee9d6576536dfa00aa10012269865
 
