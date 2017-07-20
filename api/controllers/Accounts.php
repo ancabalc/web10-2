@@ -74,7 +74,7 @@ class Accounts {
 			$salt = '$1$12!abawdawd';
 			$_POST["password"] = crypt($_POST["password"], $salt);
 			$id = $this->usersModel->insertItem($_POST);
-		} else if ($id === 0){
+		} else if ($id == 0){
 			array_push($err,"Email already exists, ");
 		}
 
