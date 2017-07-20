@@ -13,7 +13,6 @@ class Accounts {
 
       
     function login() {
-        
         if ( empty($_POST['email']) || empty($_POST['password'])) {
             return "Invalid Fields";
         } else {
@@ -86,16 +85,11 @@ class Accounts {
 		}
 	}
 
-}
-
 	function deleteAccount() {
 		if ($email = ($_POST["email"])) {
 			return changeActive($email);
 		};
-		
-		}
 	}
-
 
     function reset_password(){
         //return "here";
@@ -134,9 +128,8 @@ class Accounts {
                      }
                  }
             }
-            
-            
-            
         }
-        
     }
+}
+
+
