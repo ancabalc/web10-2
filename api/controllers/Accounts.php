@@ -10,11 +10,7 @@ class Accounts {
 	{
 		$this->usersModel = new UsersModel();
 	}
-<<<<<<< HEAD
 
-
-    
-=======
       
     function login() {
         
@@ -38,9 +34,7 @@ class Accounts {
         }
     }
      
-     
 
->>>>>>> 61552f431a6ee9d6576536dfa00aa10012269865
 	function signUp(){
 		
 		$err=[];
@@ -92,9 +86,8 @@ class Accounts {
 		}
 	}
 
-<<<<<<< HEAD
 }
-=======
+
 	function deleteAccount() {
 		if ($email = ($_POST["email"])) {
 			return changeActive($email);
@@ -147,6 +140,3 @@ class Accounts {
         }
         
     }
-
-
->>>>>>> 61552f431a6ee9d6576536dfa00aa10012269865
