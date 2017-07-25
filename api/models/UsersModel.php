@@ -18,7 +18,7 @@ class UsersModel extends DB {
         return $this->executeQuery($query);
     }
     function getLast3() {
-        $query = "select id,name,email,role,job,description from users where active=1 order by id desc limit 3";
+        $query = "select id,name,role,job,description,image from users where active=1 order by id desc limit 3";
         return $this->executeQuery($query);
     }
     function selectUser($id) {
@@ -38,10 +38,13 @@ class UsersModel extends DB {
                     $item["job"]];
 
         $query = 'INSERT INTO `users`(`name`, `email`, `password`, `role`,`job`) VALUES (?,?,?,?,?)';
-
-        $sth = $this->db->prepare($query);
-        $sth->execute($params);
-        return $this->db->lastInsertId();
+        try {
+            $sth = $this->db->prepare($query);
+            $sth->execute($params);
+            return $this->db->lastInsertId();
+        } catch(Exception $e) {
+            return false;
+        }
 
     }
 	
@@ -75,6 +78,11 @@ class UsersModel extends DB {
         $sth->execute($params);
         
         return $sth->rowCount();
+    }
+    
+    function getProfile($params){
+        $query = "select name, description, image from users where id = 1 ";
+        return $this->executeQuery($query); 
     }
 }
 ?>
