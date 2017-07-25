@@ -3,21 +3,19 @@
 
 require "models/UsersModel.php";
 require "helpers/passwords.php";
+require "_3rdparties/emailSender.php";
 
 class Accounts {
     private $usersModel;
+    private $externalHelp;
 	function __construct()
 	{
 		$this->usersModel = new UsersModel();
+		$this->externalHelp = new externalHelp();
 	}
-<<<<<<< HEAD
 
-
-    
-=======
       
     function login() {
-        
         if ( empty($_POST['email']) || empty($_POST['password'])) {
             return "Invalid Fields";
         } else {
@@ -38,9 +36,7 @@ class Accounts {
         }
     }
      
-     
 
->>>>>>> 61552f431a6ee9d6576536dfa00aa10012269865
 	function signUp(){
 		
 		$err=[];
@@ -81,28 +77,25 @@ class Accounts {
 			$salt = '$1$12!abawdawd';
 			$_POST["password"] = crypt($_POST["password"], $salt);
 			$id = $this->usersModel->insertItem($_POST);
-		} else if ($id === 0){
+		} else if ($id == 0){
 			array_push($err,"Email already exists, ");
 		}
 
 		if (empty($err)) {
+			$message = "Welcome to the comunity!";
+			$email = $_POST["email"];
+			$this->externalHelp->signUpSender($name,$message,$email);
 			return "Succesfull sign up";
 		} else {
 			return $err;
 		}
 	}
 
-<<<<<<< HEAD
-}
-=======
 	function deleteAccount() {
 		if ($email = ($_POST["email"])) {
 			return changeActive($email);
 		};
-		
-		}
 	}
-
 
     function reset_password(){
         //return "here";
@@ -141,12 +134,8 @@ class Accounts {
                      }
                  }
             }
-            
-            
-            
         }
-        
     }
+}
 
 
->>>>>>> 61552f431a6ee9d6576536dfa00aa10012269865

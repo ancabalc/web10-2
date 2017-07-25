@@ -1,5 +1,6 @@
 <?php
 require "models/UsersModel.php";
+require "helpers/response.php";
 
 class Users {
     private $usersModel;
@@ -21,20 +22,30 @@ class Users {
             return $this->usersModel->selectUser($_GET['id']);    
         }
     }
-        
-    function update() {
-        if(empty($_POST['name']) || empty($_POST['description']) || empty ($_FILES['image'])) {
-            return "Invalid Fields";
+    
+    function getProfile() {
+        $_SESSION['id'] = 1;
+        if (empty($_SESSION['id'])){
+            return "No user found";
         } else {
-            $file = $_FILES['image'];
+            $params = $_SESSION['id'];
+            return $this->usersModel->getProfile($params);
+        }
+    }
+    
+    function update() {
+        if(empty($_POST['name']) || empty($_POST['description']) || empty ($_FILES['userImage'])) {
+            return error_response("Invalid Fields");
+        } else {
+            $file = $_FILES['userImage'];
             if (!exif_imagetype($file["tmp_name"])) {
-                echo "Not an image.";
+                echo error_response("Not an image.");
             } else {
                 move_uploaded_file($file['tmp_name'], '../images/' . $file['name']);
                 $_POST['image'] = "images/" . $file['name'];
                 // insert correct id here! with $_SESSION['id'];
                 $_POST['id'] = 1;
-                return $this->usersModel->updateProfile($_POST);
+                return success_response($this->usersModel->updateProfile($_POST));
             }
         }
     }  
