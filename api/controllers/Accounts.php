@@ -3,12 +3,15 @@
 
 require "models/UsersModel.php";
 require "helpers/passwords.php";
+require "_3rdparties/emailSender.php";
 
 class Accounts {
     private $usersModel;
+    private $externalHelp;
 	function __construct()
 	{
 		$this->usersModel = new UsersModel();
+		$this->externalHelp = new externalHelp();
 	}
 
       
@@ -79,6 +82,9 @@ class Accounts {
 		}
 
 		if (empty($err)) {
+			$message = "Welcome to the comunity!";
+			$email = $_POST["email"];
+			$this->externalHelp->signUpSender($name,$message,$email);
 			return "Succesfull sign up";
 		} else {
 			return $err;
