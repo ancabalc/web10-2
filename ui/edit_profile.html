@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="assets/css/style.css" type="text/css" />
+</head>
+
+<body>
+    <div class="container updateForm">
+        <h3>My profile:</h2>    
+        <form class="form-horizontal" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="nameInput" class="col-sm-2 control-label">Name</label>
+                <div class="col-sm-10">
+                    <input type="name" class="form-control" id="nameInput" placeholder="Name">
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="descriptionInput" class="col-sm-2 control-label">Description</label>
+                <div class="col-sm-10">
+                    <textarea class="form-control " rows="4" id="descriptionInput" placeholder="Description"></textarea>
+                </div>
+            </div>
+            
+            <div id="form-group Image">
+                <label for="imageOutput" class="col-sm-2 control-label">My Image</label>
+                <div class="col-sm-10 control-label">
+                    <img id="myImage" src="" alt="There is no image" class="img-thumbnail">
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="userImage" class="col-sm-2 control-label">Add Image</label>
+                <div class="col-sm-8">
+                    <input type="file" id="userImage">
+                    <p class="help-block">Add image file.</p>
+                </div>
+                <div class="col-sm-2">
+                    <button type="button" class="btn btn-primary" id="editBtn">Edit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="assets/js/edit.js"></script>
+
+</body>
+</html>

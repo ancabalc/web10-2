@@ -76,6 +76,11 @@ class UsersModel extends DB {
         
         return $sth->rowCount();
     }
+    
+    function getProfile($params){
+        $query = "select name, description, image from users where id = 1 ";
+        return $this->executeQuery($query); 
+    }
 }
 ?>
 

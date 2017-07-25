@@ -22,12 +22,22 @@ class Users {
             return $this->usersModel->selectUser($_GET['id']);    
         }
     }
-        
+    
+    function getProfile() {
+        $_SESSION['id'] = 1;
+        if (empty($_SESSION['id'])){
+            return "No user found";
+        } else {
+            $params = $_SESSION['id'];
+            return $this->usersModel->getProfile($params);
+        }
+    }
+    
     function update() {
-        if(empty($_POST['name']) || empty($_POST['description']) || empty ($_FILES['image'])) {
+        if(empty($_POST['name']) || empty($_POST['description']) || empty ($_FILES['userImage'])) {
             return error_response("Invalid Fields");
         } else {
-            $file = $_FILES['image'];
+            $file = $_FILES['userImage'];
             if (!exif_imagetype($file["tmp_name"])) {
                 echo error_response("Not an image.");
             } else {
