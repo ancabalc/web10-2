@@ -38,10 +38,13 @@ class UsersModel extends DB {
                     $item["job"]];
 
         $query = 'INSERT INTO `users`(`name`, `email`, `password`, `role`,`job`) VALUES (?,?,?,?,?)';
-
-        $sth = $this->db->prepare($query);
-        $sth->execute($params);
-        return $this->db->lastInsertId();
+        try {
+            $sth = $this->db->prepare($query);
+            $sth->execute($params);
+            return $this->db->lastInsertId();
+        } catch(Exception $e) {
+            return false;
+        }
 
     }
 	

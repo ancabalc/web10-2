@@ -15,13 +15,15 @@
 }
 
 .searchbar {
-    margin-left: 60px;
+    margin-left: 0px;
+    display:inline-block;
 }
 
 a:hover {
     background-color: #004b8d !important;
     color:#fff !important;
 }
+/* SLIDER */
 
 /* FOOTER */
 .copyright {
@@ -33,8 +35,4 @@ a:hover {
 .updateForm{
     margin-top: 80px;
     width: 60%;
-}
-
-#imageThumb {
-    margin-bottom: 200px;
 }
