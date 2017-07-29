@@ -18,7 +18,7 @@ class UsersModel extends DB {
         return $this->executeQuery($query);
     }
     function getLast3() {
-        $query = "select id,name,role,job,description,image from users where active=1 order by id desc limit 3";
+        $query = "select name,role,job from users where active=1 order by id desc limit 3";
         return $this->executeQuery($query);
     }
     function selectUser($id) {

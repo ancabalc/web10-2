@@ -50,7 +50,7 @@ function editProfile(event){
 
 function getProfile(){
     $.ajax ({
-        url: 'https://web-10-2-grigorita.c9users.io/api/users/profile',
+        url: 'https://web10-2-lazarnicku.c9users.io/api/users/profile',
         method: 'POST',
         data: {
             
@@ -63,7 +63,7 @@ function getProfile(){
             console.log(result);
         },
         error: function (XHR, status, error){
-            alert ("Unable to get articel.");
+            alert ("Unable to get article.");
         },
         complete: function( XHR, status) {},
     })
